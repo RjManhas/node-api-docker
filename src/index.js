@@ -16,6 +16,7 @@ function generateRandomValue() {
 }
 
 app.get("/", (req, res) => {
+console.log("request")
   res.send({
     message: "Here's your response from the node.js 🐳 container",
     randomValue: randomValue,  // Always return the same random value
