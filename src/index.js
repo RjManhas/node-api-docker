@@ -14,6 +14,17 @@ app.use(express.json());
 function generateRandomValue() {
   return Math.random().toString(36).substr(2, 9); // Generates a random string
 }
+app.get("/crash", (req, res) => {
+  res.send({
+    message: "Crashing this instance now...",
+    pid: process.pid,
+  });
+
+  // Give the response a moment to flush before exiting
+  setTimeout(() => {
+    process.exit(1); // Exit with a failure code
+  }, 100);
+});
 
 app.get("/", (req, res) => {
 console.log("request")
